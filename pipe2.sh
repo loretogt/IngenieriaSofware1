@@ -1,0 +1,2 @@
+osmfilter spain-latest.osm --keep="amenity=restaurant amenity=cafe amenity=bar">rest.osm; osmconvert rest.osm -B=CiudadMadrid.poly -o=madridrest.o5m ; osmconvert madridrest.o5m --all-to-nodes --csv="@id @lon @lat amenity name website" --csv-headline | awk 'NF>4'{print}>rest.csv |sudo mysql -u root -p -e " USE grupo46; LOAD DATA LOCAL INFILE 'rest.csv' INTO TABLE restaurantes FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"
+
